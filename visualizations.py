@@ -22,18 +22,16 @@ phrases that appear in your text.
 # filter warnings
 warnings.filterwarnings("ignore")
 
-
-def show_word_cloud(df):
-    stopwords = init_stopwords()
-
-    st.write("There are {} observations and {} features in this dataset. \n".format(df.shape[0],df.shape[1]))
-
-    st.write("There are {} types of locations in this dataset such as {}... \n".format(len(df.location.unique()),
-                                                                           ", ".join(df.location.unique()[0:5])))
-
-    st.write("There are {} companies with positions in this dataset, such as {}. \n".format(len(df.company.unique()),
-                                                                                      ", ".join(df.company.unique()[0:5])))
-    st.write(df)
+def summary_statistics(df):
+    st.write("There are {} observations and {} features in this dataset. \n"
+        .format(df.shape[0],df.shape[1]))
+    st.write("There are {} types of locations in this dataset such as {}... \n"
+        .format(len(df.location.unique()), ", "
+        .join(df.location.unique()[0:5])))
+    st.write("There are {} companies with positions in this dataset, such as {}. \n"
+        .format(len(df.company.unique()),", "
+        .join(df.company.unique()[0:5])))
+    # st.write(df)
 
 
     st.header("Groups and Features")
@@ -46,7 +44,6 @@ def show_word_cloud(df):
 
     # Summary statistic of all companies
     st.write(company.describe().head())
-    
 
     # Groupby location
     st.write('location summary metrics')
@@ -57,7 +54,6 @@ def show_word_cloud(df):
 
     # Summary statistic of all locations
     st.write(location.describe().head())
-
 
     # Create the figure and axes
     fig1, ax = plt.subplots(figsize=(15, 10))
@@ -77,6 +73,11 @@ def show_word_cloud(df):
     ax.set_xlabel("Company")
     ax.set_ylabel("Highest Max Pay")
     st.pyplot(fig2)
+
+
+
+def show_word_cloud(df):
+    stopwords = init_stopwords()
 
     # WORD CLOUD
     st.write('word cloud below')

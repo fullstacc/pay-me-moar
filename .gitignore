@@ -165,3 +165,6 @@ moar-jobs/
 # notebooks
 *.ipynb
 NOTES.md
+
+# mac
+.DS_Store
